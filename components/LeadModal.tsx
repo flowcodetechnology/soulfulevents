@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface LeadModalProps {
   isOpen: boolean;
@@ -6,6 +6,16 @@ interface LeadModalProps {
 }
 
 const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    location: '',
+    referral: '',
+    notes: ''
+  });
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -22,6 +32,35 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
     };
   }, [isOpen, onClose]);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('submitting');
+    
+    try {
+        const response = await fetch('/mail.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok && result.sent) {
+            setStatus('success');
+            setFormData({ name: '', phone: '', email: '', location: '', referral: '', notes: '' });
+        } else {
+            setStatus('error');
+        }
+    } catch (error) {
+        console.error('Submission error:', error);
+        setStatus('error');
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -33,7 +72,7 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
       aria-hidden={!isOpen}
       style={{ display: 'flex', zIndex: 210, padding: 0 }}
     >
-      {/* Background overlay (mostly hidden by full screen modal but kept for structure) */}
+      {/* Background overlay */}
       <div className="modal__overlay" onClick={onClose} style={{ background: 'rgba(0,0,0,0.85)' }}></div>
       
       {/* Full screen dialog with Dark Green Background */}
@@ -68,51 +107,129 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
                         It all begins with a conversation.
                     </p>
 
-                    <form id="popupLeadForm" className="lead-form" method="post" noValidate>
-                        <div className="form-row">
-                            <label htmlFor="popup-name" className="form-label" style={{ color: '#fff' }}>Full Name</label>
-                            <input id="popup-name" name="name" className="form-input" type="text" style={{ background: '#fff', color: '#333', border: 'none' }} />
+                    {status === 'success' ? (
+                        <div style={{ background: 'rgba(255,255,255,0.1)', padding: '2rem', borderRadius: '8px', textAlign: 'center', color: '#fff' }}>
+                            <h3 className="font-lufga-black" style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Message Sent!</h3>
+                            <p className="font-lufga-light">Thank you for reaching out. We will get back to you within 24 hours.</p>
+                            <button 
+                                onClick={() => setStatus('idle')} 
+                                className="btn btn--primary" 
+                                style={{ marginTop: '2rem' }}
+                            >
+                                Send another message
+                            </button>
                         </div>
+                    ) : (
+                        <form id="popupLeadForm" className="lead-form" noValidate onSubmit={handleSubmit}>
+                            <div className="form-row">
+                                <label htmlFor="popup-name" className="form-label" style={{ color: '#fff' }}>Full Name</label>
+                                <input 
+                                    id="popup-name" 
+                                    name="name" 
+                                    className="form-input" 
+                                    type="text" 
+                                    style={{ background: '#fff', color: '#333', border: 'none' }} 
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
 
-                        <div className="form-row">
-                            <label htmlFor="popup-phone" className="form-label" style={{ color: '#fff' }}>Phone Number</label>
-                            <input id="popup-phone" name="phone" className="form-input" type="tel" style={{ background: '#fff', color: '#333', border: 'none' }} />
-                        </div>
+                            <div className="form-row">
+                                <label htmlFor="popup-phone" className="form-label" style={{ color: '#fff' }}>Phone Number</label>
+                                <input 
+                                    id="popup-phone" 
+                                    name="phone" 
+                                    className="form-input" 
+                                    type="tel" 
+                                    style={{ background: '#fff', color: '#333', border: 'none' }} 
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
 
-                        <div className="form-row">
-                            <label htmlFor="popup-email" className="form-label" style={{ color: '#fff' }}>Email Address</label>
-                            <input id="popup-email" name="email" className="form-input" type="email" style={{ background: '#fff', color: '#333', border: 'none' }} />
-                        </div>
+                            <div className="form-row">
+                                <label htmlFor="popup-email" className="form-label" style={{ color: '#fff' }}>Email Address</label>
+                                <input 
+                                    id="popup-email" 
+                                    name="email" 
+                                    className="form-input" 
+                                    type="email" 
+                                    style={{ background: '#fff', color: '#333', border: 'none' }} 
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
 
-                        <div className="form-row">
-                            <label htmlFor="popup-location" className="form-label" style={{ color: '#fff' }}>Event Location</label>
-                            <input id="popup-location" name="location" className="form-input" type="text" style={{ background: '#fff', color: '#333', border: 'none' }} />
-                        </div>
+                            <div className="form-row">
+                                <label htmlFor="popup-location" className="form-label" style={{ color: '#fff' }}>Event Location</label>
+                                <input 
+                                    id="popup-location" 
+                                    name="location" 
+                                    className="form-input" 
+                                    type="text" 
+                                    style={{ background: '#fff', color: '#333', border: 'none' }} 
+                                    value={formData.location}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
 
-                        <div className="form-row">
-                            <label htmlFor="popup-referral" className="form-label" style={{ color: '#fff' }}>How did you hear about Soulful Kitchen?</label>
-                            <select id="popup-referral" name="referral" className="form-input" style={{ background: '#fff', color: '#333', border: 'none' }}>
-                                <option value="">Select an option</option>
-                                <option value="instagram">Instagram</option>
-                                <option value="tiktok">TikTok</option>
-                                <option value="friend">Friend Referral</option>
-                                <option value="google">Google</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
+                            <div className="form-row">
+                                <label htmlFor="popup-referral" className="form-label" style={{ color: '#fff' }}>How did you hear about Soulful Kitchen?</label>
+                                <select 
+                                    id="popup-referral" 
+                                    name="referral" 
+                                    className="form-input" 
+                                    style={{ background: '#fff', color: '#333', border: 'none' }}
+                                    value={formData.referral}
+                                    onChange={handleChange}
+                                >
+                                    <option value="">Select an option</option>
+                                    <option value="instagram">Instagram</option>
+                                    <option value="tiktok">TikTok</option>
+                                    <option value="friend">Friend Referral</option>
+                                    <option value="google">Google</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
 
-                        <div className="form-row">
-                            <label htmlFor="popup-notes" className="form-label" style={{ marginBottom: '0.25rem', color: '#fff' }}>Tell us a bit about your upcoming event:</label>
-                            <p style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.7)', marginBottom: '0.5rem', lineHeight: '1.4' }}>
-                                (e.g., occasion, date, number of guests, theme, dietary preferences, or special requests)
-                            </p>
-                            <textarea id="popup-notes" name="notes" className="form-input" rows={4} style={{ background: '#fff', color: '#333', border: 'none' }}></textarea>
-                        </div>
+                            <div className="form-row">
+                                <label htmlFor="popup-notes" className="form-label" style={{ marginBottom: '0.25rem', color: '#fff' }}>Tell us a bit about your upcoming event:</label>
+                                <p style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.7)', marginBottom: '0.5rem', lineHeight: '1.4' }}>
+                                    (e.g., occasion, date, number of guests, theme, dietary preferences, or special requests)
+                                </p>
+                                <textarea 
+                                    id="popup-notes" 
+                                    name="notes" 
+                                    className="form-input" 
+                                    rows={4} 
+                                    style={{ background: '#fff', color: '#333', border: 'none' }}
+                                    value={formData.notes}
+                                    onChange={handleChange}
+                                ></textarea>
+                            </div>
 
-                        <div className="form-row" style={{ marginTop: '1.5rem' }}>
-                            <button type="submit" className="btn btn--primary btn--full" style={{ fontSize: '1.1rem', padding: '1rem' }}>Get a proposal</button>
-                        </div>
-                    </form>
+                            {status === 'error' && (
+                                <p style={{ color: '#ff8a80', marginBottom: '1rem', fontSize: '0.9rem' }}>
+                                    Something went wrong. Please check your connection or try again later.
+                                </p>
+                            )}
+
+                            <div className="form-row" style={{ marginTop: '1.5rem' }}>
+                                <button 
+                                    type="submit" 
+                                    className="btn btn--primary btn--full" 
+                                    style={{ fontSize: '1.1rem', padding: '1rem', opacity: status === 'submitting' ? 0.7 : 1 }}
+                                    disabled={status === 'submitting'}
+                                >
+                                    {status === 'submitting' ? 'Sending...' : 'Get a proposal'}
+                                </button>
+                            </div>
+                        </form>
+                    )}
                 </div>
             </div>
         </div>
