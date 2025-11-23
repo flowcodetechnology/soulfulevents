@@ -25,12 +25,14 @@ const Footer: React.FC<FooterProps> = ({ onOpenLeadModal }) => {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.07C22 6.49 17.52 2 11.93 2 6.34 2 1.86 6.49 1.86 12.07 1.86 17.07 5.94 21 10.81 21v-6.7H8.78v-3.98h2.03V8.36c0-2 1.2-3.1 3-3.1.86 0 1.59.06 1.8.09v2.08h-1.25c-1 0-1.2.5-1.2 1.15v1.54h2.35l-.37 3.98h-1.98V21C18.06 21 22 17.07 22 12.07z"/></svg>
             </a></li>
 
-            <li><a className="social-link" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Soulful Kitchen on Instagram">
+            <li><a className="social-link" href="https://www.instagram.com/soulfulkitchen_/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Soulful Kitchen on Instagram">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.2A4.8 4.8 0 1 0 16.8 13 4.8 4.8 0 0 0 12 8.2zm5.2-.9a1.1 1.1 0 1 0 1.1 1.1 1.1 1.1 0 0 0-1.1-1.1z"/></svg>
             </a></li>
 
-            <li><a className="social-link" href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Soulful Kitchen on Twitter">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 5.92c-.66.3-1.37.5-2.12.6a3.7 3.7 0 0 0 1.62-2.03 7.34 7.34 0 0 1-2.34.9 3.66 3.66 0 0 0-6.22 3.34 10.39 10.39 0 0 1-7.55-3.83 3.66 3.66 0 0 0 1.13 4.89A3.58 3.58 0 0 1 3 10.6v.05a3.66 3.66 0 0 0 2.94 3.58 3.67 3.67 0 0 1-1.65.06 3.66 3.66 0 0 0 3.42 2.54A7.34 7.34 0 0 1 2 19.54a10.33 10.33 0 0 0 5.6 1.64c6.72 0 10.4-5.57 10.4-10.4v-.47A7.5 7.5 0 0 0 22 5.92z"/></svg>
+            <li><a className="social-link" href="https://www.tiktok.com/@soulfulkitchen_" target="_blank" rel="noopener noreferrer" aria-label="Soulful Kitchen on TikTok">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+              </svg>
             </a></li>
 
             <li><a className="social-link" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Soulful Kitchen on LinkedIn">
@@ -43,10 +45,9 @@ const Footer: React.FC<FooterProps> = ({ onOpenLeadModal }) => {
         <nav className="footer__col footer__links" aria-labelledby="footer-links">
           <h3 id="footer-links" className="footer__heading font-lufga-black">Quick links</h3>
           <ul className="footer-links-list" role="list">
-            <li><a href="#about" className="footer-link">About</a></li>
+            <li><a href="#who-we-are" className="footer-link">About</a></li>
             <li><a href="#services" className="footer-link">Services</a></li>
             <li><a href="#lead-section" className="footer-link">Book a call</a></li>
-            <li><a href="/privacy" className="footer-link">Privacy</a></li>
           </ul>
         </nav>
 

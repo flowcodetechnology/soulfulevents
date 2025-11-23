@@ -440,7 +440,7 @@ img {
 
 /* Specific adjustment for modal logo positioning and size */
 .lead-popup-image .lead-overlay-logo {
-    width: 90px;
+    width: 140px; /* Matched width with static logo as requested */
     left: 2.5rem;
     top: 2.5rem;
     transform: none; /* Removes centering */
