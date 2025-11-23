@@ -41,7 +41,8 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
     setStatus('submitting');
     
     try {
-        const response = await fetch('/mail.php', {
+        // Updated to relative path for cPanel compatibility
+        const response = await fetch('mail.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)

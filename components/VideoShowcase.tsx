@@ -1,10 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-interface VideoShowcaseProps {
-  onOpenVideo: () => void;
-}
-
-const VideoShowcase: React.FC<VideoShowcaseProps> = ({ onOpenVideo }) => {
+const VideoShowcase: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 

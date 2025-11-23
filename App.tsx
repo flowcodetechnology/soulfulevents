@@ -35,8 +35,8 @@ const App: React.FC = () => {
         <Hero onOpenVideo={handleOpenVideo} onOpenLeadModal={handleOpenLeadModal} />
         <PainPoints />
         <Services onOpenLeadModal={handleOpenLeadModal} />
-        <LeadSection onOpenLeadModal={handleOpenLeadModal} />
-        <VideoShowcase onOpenVideo={handleOpenVideo} />
+        <LeadSection />
+        <VideoShowcase />
         <Partners />
         <Gallery />
         <Testimonials onOpenLeadModal={handleOpenLeadModal} />

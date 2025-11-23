@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 
-interface LeadSectionProps {
-    onOpenLeadModal: (e?: React.MouseEvent) => void;
-}
-
-const LeadSection: React.FC<LeadSectionProps> = ({ onOpenLeadModal }) => {
+const LeadSection: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -24,7 +20,7 @@ const LeadSection: React.FC<LeadSectionProps> = ({ onOpenLeadModal }) => {
     setStatus('submitting');
     
     try {
-        const response = await fetch('/mail.php', {
+        const response = await fetch('mail.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
