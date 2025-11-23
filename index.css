@@ -790,12 +790,21 @@ img {
 }
 
 /* MEDIA QUERIES */
-@media (min-width: 900px) {
-    .lead-popup-image { display: block; }
+
+/* TABLET & SMALL DESKTOP (Max 1100px) */
+@media (max-width: 1100px) {
+    /* Services: 3 columns -> 2 columns */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
+/* TABLET & MOBILE (Max 900px) */
 @media (max-width: 900px) {
+    .site-header { padding: 0.5rem 1.5rem; }
     .hero { grid-template-columns: 1fr; text-align: center; border-width: 12px; }
+    
+    /* Services Intro Stack */
     .services-intro { 
         grid-template-columns: 1fr; 
         text-align: center;
@@ -805,23 +814,57 @@ img {
         transform: rotate(90deg); /* Point down on mobile */
         margin: 1.5rem 0;
     }
+
+    /* Pain Points Stack */
     .pain__grid { grid-template-columns: 1fr; }
-    .services-grid { grid-template-columns: 1fr; }
-    
-    /* New Lead Section Mobile Support */
+
+    /* Lead Section (Split Image/Form) Stack */
     .lead-split-section { grid-template-columns: 1fr; }
     .lead-split-image { 
         height: auto; 
-        min-height: 400px; 
+        min-height: 350px; 
         padding: 3rem 1.5rem;
     }
-    .lead-split-content { padding: 3rem 5%; }
-    
+    .lead-split-content { 
+        padding: 4rem 5%; 
+    }
+
     .two-up-grid { grid-template-columns: 1fr; }
+    
+    /* Footer: 4 columns -> 2 columns */
     .footer__grid { grid-template-columns: 1fr 1fr; }
-    .lead-popup-form-wrapper { padding: 1.5rem; }
+    
+    .lead-popup-image { display: none; } /* Hide large image in modal on smaller screens */
+    .lead-popup-form-wrapper { padding: 2rem; }
+
     .quality-time__grid { grid-template-columns: 1fr; }
     .quality-time__right { order: -1; margin-bottom: 2rem; }
+}
+
+/* MOBILE (Max 700px) */
+@media (max-width: 700px) {
+    /* Services: 2 columns -> 1 column */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-title { font-size: 2.5rem; }
+}
+
+/* SMALL MOBILE (Max 600px) */
+@media (max-width: 600px) {
+    /* Footer: 2 columns -> 1 column */
+    .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer__bottom-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+    }
 }
 
 @keyframes slow-zoom {
