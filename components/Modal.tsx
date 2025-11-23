@@ -44,12 +44,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
       onClick={handleBackdropClick}
     >
       <div className="modal__overlay" data-modal-close></div>
-      <div className="modal__dialog" role="document">
+      <div className="modal__dialog modal__dialog--video" role="document">
         <button className="modal__close" type="button" aria-label="Close video" onClick={onClose} data-modal-close>&times;</button>
-        <h2 id="videoModalTitle" className="modal__title">Soulful Kitchen in action</h2>
-        <div className="modal__body">
-          {children}
-        </div>
+        {children}
       </div>
     </div>
   );

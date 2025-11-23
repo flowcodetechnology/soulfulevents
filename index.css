@@ -438,9 +438,12 @@ img {
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
-/* Specific adjustment for modal to be smaller */
+/* Specific adjustment for modal logo positioning and size */
 .lead-popup-image .lead-overlay-logo {
-    width: 100px;
+    width: 90px;
+    left: 2.5rem;
+    top: 2.5rem;
+    transform: none; /* Removes centering */
 }
 
 /* VIDEO SHOWCASE */
@@ -735,6 +738,19 @@ img {
     display: flex;
     overflow: hidden;
 }
+
+/* VIDEO MODAL STYLES (Overrides base modal__dialog) */
+.modal__dialog--video {
+    background: transparent;
+    height: auto;
+    /* Reduced width to 80vw and added a height-based width constraint (142vh ~= 1.77 * 80vh) to keep 16:9 videos fitting within ~80% height */
+    width: min(1000px, 80vw, 142vh); 
+    max-width: 1000px;
+    box-shadow: none;
+    overflow: visible;
+    position: relative;
+}
+
 .modal__close {
     position: absolute;
     top: 1rem;
@@ -743,8 +759,15 @@ img {
     border: none;
     font-size: 2rem;
     cursor: pointer;
-    z-index: 10;
+    z-index: 20; /* Ensure it stays on top */
     line-height: 1;
+}
+
+.modal__dialog--video .modal__close {
+    color: #fff;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    top: -2.5rem;
+    right: -1rem;
 }
 
 .lead-popup-content {
@@ -916,6 +939,22 @@ img {
     .lead-overlay-logo {
         top: 1.5rem;
         width: 100px;
+    }
+    
+    /* Video Modal Mobile Fixes */
+    /* Position the close button inside the video area with a background for visibility */
+    .modal__dialog--video .modal__close {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 36px;
+        height: 36px;
+        background: rgba(0,0,0,0.6);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        filter: none; /* Remove drop shadow in favor of bg */
+        padding-bottom: 2px; /* Center alignment adjustment */
     }
 }
 
