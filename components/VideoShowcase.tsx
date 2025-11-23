@@ -33,7 +33,11 @@ const VideoShowcase: React.FC<VideoShowcaseProps> = ({ onOpenVideo }) => {
                 onKeyDown={(e) => e.key === 'Enter' && handlePlay()}
             >
                 {/* poster image */}
-                <img className="video-player__poster" src="/assets/showcase-poster.jpg" alt="Demo - Soulful Kitchen event serving" />
+                <img 
+                    className="video-player__poster" 
+                    src="https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2070&auto=format&fit=crop" 
+                    alt="Demo - Soulful Kitchen event serving" 
+                />
 
                 {/* big accessible play button */}
                 <button className="video-player__play" aria-label="Play video">

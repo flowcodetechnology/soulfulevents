@@ -57,12 +57,12 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
             </div>
 
             {/* Right Column: Form with Dark Green Background and White Text */}
-            <div className="lead-popup-form-wrapper" style={{ flex: 1, height: '100%', overflowY: 'auto', padding: '4rem 5%', display: 'flex', flexDirection: 'column', justifyContent: 'center', backgroundColor: '#2D6254' }}>
-                <div style={{ maxWidth: '600px', margin: '0 auto', width: '100%' }}>
-                    <h2 id="leadModalTitle" className="lead-card__title font-lufga-black" style={{ fontSize: '2.5rem', marginBottom: '0.5rem', color: '#fff', lineHeight: 1.1 }}>
+            <div className="lead-popup-form-wrapper" style={{ flex: 1, height: '100%', overflowY: 'auto', display: 'flex', flexDirection: 'column', backgroundColor: '#2D6254' }}>
+                <div style={{ maxWidth: '600px', margin: 'auto', width: '100%' }}>
+                    <h2 id="leadModalTitle" className="lead-card__title font-lufga-black" style={{ marginBottom: '0.5rem', color: '#fff', lineHeight: 1.1 }}>
                         Book a call today!
                     </h2>
-                    <p className="lead-card__intro font-lufga-light" style={{ fontSize: '1.15rem', marginBottom: '2rem', lineHeight: '1.5', color: 'rgba(255, 255, 255, 0.9)' }}>
+                    <p className="lead-card__intro font-lufga-light" style={{ marginBottom: '2rem', lineHeight: '1.5', color: 'rgba(255, 255, 255, 0.9)' }}>
                         Create moments worth remembering.<br />
                         It all begins with a conversation.
                     </p>

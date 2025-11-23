@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface QualityTimeProps {
     onOpenLeadModal: (e?: React.MouseEvent) => void;
@@ -16,9 +17,24 @@ const QualityTime: React.FC<QualityTimeProps> = ({ onOpenLeadModal }) => {
           </h2>
 
           <ul className="quality-time__list font-lufga-light" aria-labelledby="quality-time-title">
-            <li className="quality-time__item">You will miss out on bonding opportunities.</li>
-            <li className="quality-time__item">You wont forge the relationships that count.</li>
-            <li className="quality-time__item">You could end up with sub-par meals that impact staff morale.</li>
+            <li className="quality-time__item">
+              <div className="quality-time__icon" aria-hidden="true">
+                <ArrowUpRight size={24} color="#FE8731" strokeWidth={2.5} />
+              </div>
+              <span>You will miss out on bonding opportunities.</span>
+            </li>
+            <li className="quality-time__item">
+              <div className="quality-time__icon" aria-hidden="true">
+                <ArrowUpRight size={24} color="#FE8731" strokeWidth={2.5} />
+              </div>
+              <span>You wont forge the relationships that count.</span>
+            </li>
+            <li className="quality-time__item">
+              <div className="quality-time__icon" aria-hidden="true">
+                <ArrowUpRight size={24} color="#FE8731" strokeWidth={2.5} />
+              </div>
+              <span>You could end up with sub-par meals that impact staff morale.</span>
+            </li>
           </ul>
 
           <p className="quality-time__cta">

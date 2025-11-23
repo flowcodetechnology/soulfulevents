@@ -264,17 +264,15 @@ img {
 
 .pain__item {
   display: flex;
-  align-items: flex-start;
+  align-items: center; /* Centered vertically with icon */
   gap: 1rem;
 }
 
-.pain__dot {
-  flex: 0 0 12px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--color-dark);
-  margin-top: 0.5rem;
+.pain__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* SERVICES */
@@ -461,6 +459,20 @@ img {
 .video-player:hover .video-player__play {
     transform: translate(-50%, -50%) scale(1.1);
 }
+
+/* Embed Video (Modal) */
+.video-embed {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+}
+.responsive-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
 
 /* GALLERY - ZERO GAP */
 .two-up-section {
@@ -654,21 +666,22 @@ img {
 
 .quality-time__item {
   position: relative;
-  padding-left: 1.5rem;
   margin-bottom: 1rem;
   font-size: 1.1rem;
   color: var(--color-dark);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding-left: 0;
+}
+
+.quality-time__icon {
+    flex-shrink: 0;
+    margin-top: 2px;
 }
 
 .quality-time__item::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.6em;
-  width: 8px;
-  height: 8px;
-  background: var(--color-accent);
-  border-radius: 50%;
+  content: none;
 }
 
 .quality-time__right img {
@@ -722,7 +735,7 @@ img {
 .lead-popup-image {
     flex: 1;
     position: relative;
-    display: none; /* hidden on mobile */
+    display: block; /* Visible by default (Desktop/Tablets) */
 }
 .lead-popup-image img {
     width: 100%;
@@ -737,13 +750,22 @@ img {
     /* Gradient starts transparent and fades to DARK GREEN on the right edge to blend with form */
     background: linear-gradient(to right, transparent 70%, #2D6254 100%);
 }
+
 .lead-popup-form-wrapper {
     flex: 1;
     padding: 3rem;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* No justify-content here to allow margin:auto to handle centering safely */
+}
+
+/* Modal Typography Responsive Classes */
+.lead-card__title {
+  font-size: 2.5rem;
+}
+.lead-card__intro {
+  font-size: 1.15rem;
 }
 
 /* Form Styles */
@@ -815,7 +837,15 @@ img {
     }
 
     /* Pain Points Stack */
-    .pain__grid { grid-template-columns: 1fr; }
+    .pain__grid { 
+      grid-template-columns: 1fr; 
+      gap: 2.5rem;
+    }
+    .pain__item {
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+    }
 
     /* Lead Section (Split Image/Form) Stack */
     .lead-split-section { grid-template-columns: 1fr; }
@@ -833,21 +863,35 @@ img {
     /* Footer: 4 columns -> 2 columns */
     .footer__grid { grid-template-columns: 1fr 1fr; }
     
-    .lead-popup-image { display: none; } /* Hide large image in modal on smaller screens */
-    .lead-popup-form-wrapper { padding: 2rem; }
-
     .quality-time__grid { grid-template-columns: 1fr; }
     .quality-time__right { order: -1; margin-bottom: 2rem; }
 }
 
-/* MOBILE (Max 700px) */
-@media (max-width: 700px) {
+/* Small laptops / Tablets with small height */
+@media (max-width: 1024px), (max-height: 800px) {
+  .lead-popup-form-wrapper {
+      padding: 2rem !important; 
+  }
+  .lead-card__title {
+      font-size: 2rem;
+  }
+  .lead-card__intro {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+  }
+}
+
+/* MOBILE (Max 768px) */
+@media (max-width: 768px) {
     /* Services: 2 columns -> 1 column */
     .services-grid {
         grid-template-columns: 1fr;
     }
     
     .hero-title { font-size: 2.5rem; }
+    
+    /* LeadModal: Hide image only on small screens */
+    .lead-popup-image { display: none; }
 }
 
 /* SMALL MOBILE (Max 600px) */

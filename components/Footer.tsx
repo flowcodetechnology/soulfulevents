@@ -45,7 +45,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenLeadModal }) => {
           <ul className="footer-links-list" role="list">
             <li><a href="#about" className="footer-link">About</a></li>
             <li><a href="#services" className="footer-link">Services</a></li>
-            <li><button className="footer-link" onClick={onOpenLeadModal} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', font: 'inherit' }}>Book a call</button></li>
+            <li><a href="#lead-section" className="footer-link">Book a call</a></li>
             <li><a href="/privacy" className="footer-link">Privacy</a></li>
           </ul>
         </nav>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
 
 const PainPoints: React.FC = () => {
   return (
@@ -6,21 +7,27 @@ const PainPoints: React.FC = () => {
       <div className="container">
         <ul className="pain__grid" role="list">
           <li className="pain__item">
-            <span className="pain__dot" aria-hidden="true"></span>
+            <div className="pain__icon" aria-hidden="true">
+              <ArrowUpRight size={32} color="#FE8731" strokeWidth={2.5} />
+            </div>
             <div className="pain__copy">
               <strong>On Time <br/>Delivery</strong>
             </div>
           </li>
 
           <li className="pain__item">
-            <span className="pain__dot" aria-hidden="true"></span>
+            <div className="pain__icon" aria-hidden="true">
+              <ArrowUpRight size={32} color="#FE8731" strokeWidth={2.5} />
+            </div>
             <div className="pain__copy">
               <strong>Unpredictable <br/> Food Standard</strong>
             </div>
           </li>
 
           <li className="pain__item">
-            <span className="pain__dot" aria-hidden="true"></span>
+            <div className="pain__icon" aria-hidden="true">
+              <ArrowUpRight size={32} color="#FE8731" strokeWidth={2.5} />
+            </div>
             <div className="pain__copy">
               <strong>Budget <br/> Overruns </strong>
             </div>

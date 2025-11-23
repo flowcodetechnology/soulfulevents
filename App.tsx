@@ -56,12 +56,15 @@ const App: React.FC = () => {
       {/* Video Modal */}
       <Modal isOpen={isVideoModalOpen} onClose={handleCloseVideo}>
          <div className="video-embed">
-            <iframe 
-              src="https://www.youtube.com/embed/JwyjVW5Hu5Y?autoplay=1" 
-              title="Soulful Kitchen Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen
-            ></iframe>
+            <video 
+              src="/assets/showcase-video.mp4" 
+              className="responsive-video"
+              controls 
+              autoPlay
+              playsInline
+            >
+              Your browser does not support the video tag.
+            </video>
          </div>
       </Modal>
 
