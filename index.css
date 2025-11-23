@@ -430,11 +430,17 @@ img {
 .lead-overlay-logo {
     position: absolute;
     top: 2rem;
-    left: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
     width: 140px;
     height: auto;
     z-index: 10;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* Specific adjustment for modal to be smaller */
+.lead-popup-image .lead-overlay-logo {
+    width: 100px;
 }
 
 /* VIDEO SHOWCASE */
@@ -909,7 +915,6 @@ img {
     
     .lead-overlay-logo {
         top: 1.5rem;
-        left: 1.5rem;
         width: 100px;
     }
 }
