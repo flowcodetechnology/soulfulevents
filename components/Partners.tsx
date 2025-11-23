@@ -1,23 +1,20 @@
 import React from 'react';
 
 const Partners: React.FC = () => {
-  const partnerNames = [
-    "Zoho",
-    "Grundfos",
-    "Sybyl",
-    "BBC Africa",
-    "Ilina Program",
-    "Food 4 Education",
-    "Hayat",
-    "Nairobi Chapel Syokimau",
-    "Saint Gobain",
-    "Simplify IT"
+  // Using Clearbit Logo API to fetch logos dynamically based on domain names.
+  // Replaced text-based fallback with local asset path for uniformity.
+  const partners = [
+    { name: "Zoho", logo: "https://logo.clearbit.com/zoho.com" },
+    { name: "Grundfos", logo: "https://logo.clearbit.com/grundfos.com" },
+    { name: "Sybyl", logo: "https://logo.clearbit.com/sybyl.com" },
+    { name: "BBC", logo: "https://logo.clearbit.com/bbc.com" },
+    { name: "Saint Gobain", logo: "https://logo.clearbit.com/saint-gobain.com" },
+    { name: "Food 4 Education", logo: "https://logo.clearbit.com/food4education.org" },
+    { name: "Hayat", logo: "https://logo.clearbit.com/hayat.com" },
+    { name: "Nairobi Chapel", logo: "https://logo.clearbit.com/nairobichapel.org" },
+    { name: "Simplify IT", logo: "https://logo.clearbit.com/simplifyit.com" },
+    { name: "Ilina Program", logo: "/assets/ilina-program.png" }
   ];
-
-  // Expects images named partner-1.png, partner-2.png, etc. in /assets/
-  const logos = partnerNames.map((_, idx) => 
-    `/assets/partner-${idx + 1}.png`
-  );
 
   return (
     <section id="partners" className="partners partners--orange" aria-labelledby="partners-title">
@@ -30,26 +27,43 @@ const Partners: React.FC = () => {
           <div className="marquee__track" tabIndex={0} aria-live="off" aria-hidden="false">
             {/* Original Group */}
             <div className="marquee__group">
-              {logos.map((src, idx) => (
-                <img key={`l1-${idx}`} src={src} alt={`${partnerNames[idx]} logo`} className="marquee__logo" onError={(e) => {
-                    // Fallback to text if image missing for development
-                    e.currentTarget.style.display = 'none'; 
-                    e.currentTarget.parentElement?.insertAdjacentHTML('beforeend', `<span class="partner-fallback">${partnerNames[idx]}</span>`);
-                }} />
+              {partners.map((partner, idx) => (
+                <img 
+                  key={`l1-${idx}`} 
+                  src={partner.logo} 
+                  alt={`${partner.name} logo`} 
+                  className="marquee__logo"
+                  onError={(e) => {
+                    // Hide if image fails
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
               ))}
             </div>
 
             {/* Duplicate for seamless loop */}
             <div className="marquee__group" aria-hidden="true">
-              {logos.map((src, idx) => (
-                <img key={`l2-${idx}`} src={src} alt="" className="marquee__logo" />
+              {partners.map((partner, idx) => (
+                <img 
+                  key={`l2-${idx}`} 
+                  src={partner.logo} 
+                  alt="" 
+                  className="marquee__logo"
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
               ))}
             </div>
             
              {/* Triplicate for safety on wide screens */}
              <div className="marquee__group" aria-hidden="true">
-              {logos.map((src, idx) => (
-                <img key={`l3-${idx}`} src={src} alt="" className="marquee__logo" />
+              {partners.map((partner, idx) => (
+                <img 
+                  key={`l3-${idx}`} 
+                  src={partner.logo} 
+                  alt="" 
+                  className="marquee__logo" 
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
               ))}
             </div>
           </div>
