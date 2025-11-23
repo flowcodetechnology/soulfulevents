@@ -13,6 +13,10 @@
   --shadow-soft: 0 20px 40px rgba(45, 98, 84, 0.25);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -421,6 +425,16 @@ img {
 
 .lead-split-content .form-input:focus {
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.lead-overlay-logo {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: 140px;
+    height: auto;
+    z-index: 10;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
 /* VIDEO SHOWCASE */
@@ -892,6 +906,12 @@ img {
     
     /* LeadModal: Hide image only on small screens */
     .lead-popup-image { display: none; }
+    
+    .lead-overlay-logo {
+        top: 1.5rem;
+        left: 1.5rem;
+        width: 100px;
+    }
 }
 
 /* SMALL MOBILE (Max 600px) */

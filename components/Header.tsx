@@ -8,7 +8,9 @@ const Header: React.FC<HeaderProps> = ({ onOpenLeadModal }) => {
   return (
     <header className="site-header" id="top">
       <div className="site-brand">
-        <img src="/assets/logo.png" alt="Soulful Kitchen logo" className="site-logo" />
+        <a href="/" aria-label="Soulful Kitchen Home" style={{ display: 'block' }}>
+          <img src="/assets/logo.png" alt="Soulful Kitchen logo" className="site-logo" />
+        </a>
         <span className="brand-text"></span>
       </div>
 

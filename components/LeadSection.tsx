@@ -9,6 +9,7 @@ const LeadSection: React.FC<LeadSectionProps> = ({ onOpenLeadModal }) => {
     <section id="lead-section" className="lead-split-section" aria-labelledby="lead-section-title">
       {/* Left Column: Image with Overlay Text */}
       <div className="lead-split-image">
+        <img src="/assets/logo.png" alt="Soulful Kitchen" className="lead-overlay-logo" />
         <div className="lead-overlay-content">
              <h2 id="lead-section-title" className="section-title font-lufga-black" style={{ color: '#fff', marginBottom: '1rem', lineHeight: '1.1' }}>
               Let’s help you turn your next event into an experience worth remembering.

@@ -57,7 +57,7 @@ const App: React.FC = () => {
       <Modal isOpen={isVideoModalOpen} onClose={handleCloseVideo}>
          <div className="video-embed">
             <video 
-              src="/assets/showcase-video.mp4" 
+              src="/assets/hero-video.mp4" 
               className="responsive-video"
               controls 
               autoPlay

@@ -49,6 +49,7 @@ const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
         <div className="lead-popup-content" style={{ width: '100%', height: '100%', display: 'flex' }}>
             {/* Left Column: Image with blending edge */}
             <div className="lead-popup-image" style={{ flex: 1, height: '100%', position: 'relative' }}>
+                <img src="/assets/logo.png" alt="Soulful Kitchen" className="lead-overlay-logo" />
                 <img 
                     src="/assets/lead-modal.jpg" 
                     alt="Catering presentation" 
