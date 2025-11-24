@@ -16,8 +16,8 @@ const Services: React.FC<ServicesProps> = ({ onOpenLeadModal }) => {
         <div className="services-intro" role="region" aria-labelledby="services-title">
           <div className="services-intro__left">
             <h2 id="services-title" className="services-title font-lufga-black">
-              You shouldnt have to sacrifice<br/>
-              "Time &amp; Quality"<br/>
+              But You shouldn't have to sacrifice<br/>
+              Time &amp; Quality<br/>
               <span className="services-title__accent">For meals that nature your people</span>
             </h2>
           </div>

@@ -5,6 +5,13 @@ const PainPoints: React.FC = () => {
   return (
     <section id="pain-points" className="section pain" aria-labelledby="pain-title">
       <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 id="pain-title" className="section-title font-lufga-black">Planning an Event can be overwhelming</h2>
+            <p className="font-lufga-light" style={{ color: '#FE8731', fontSize: '1.25rem', fontWeight: 500 }}>
+                Juggling caterers only adds another layer of stress
+            </p>
+        </div>
+
         <ul className="pain__grid" role="list">
           <li className="pain__item">
             <div className="pain__icon" aria-hidden="true">
