@@ -16,7 +16,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenVideo, onOpenLeadModal }) => {
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             aria-hidden="true"
           >
             {/* Replace with your video file in public/assets/ */}
