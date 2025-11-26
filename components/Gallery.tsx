@@ -20,14 +20,14 @@ const services: ServiceItem[] = [
   {
     id: 2,
     title: "Staff Meals",
-    image: "/assets/gallery-2.jpg", // Ensure this image is portrait
+    image: "/assets/IMG-20230523-WA0012.jpg", // Ensure this image is portrait
     description: "Nutritious Daily Office Lunches",
     longText: "Fuel your team's productivity with meals that taste like home. Our corporate meal plans are designed to be nutritious, varied, and comforting. We deliver hot, fresh lunches directly to your office, helping you build a company culture centered around sharing good food."
   },
   {
     id: 3,
     title: "Take Away Services",
-    image: "/assets/gallery-3.jpg", // Ensure this image is portrait
+    image: "/assets/Soulful Kitchen-38.jpg", // Ensure this image is portrait
     description: "Soulful Flavors On The Go",
     longText: "Craving the Soulful Kitchen taste but short on time? Our take-away service brings our signature dishes to you in convenient, eco-friendly packaging. Perfect for quick lunches, dinners at home, or picnics. Experience restaurant quality wherever you are."
   }
