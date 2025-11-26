@@ -16,7 +16,8 @@ const Header: React.FC<HeaderProps> = ({ onOpenLeadModal }) => {
 
       <nav className="site-nav" aria-label="Primary navigation">
         <a className="nav-link" href="#who-we-are">About Us</a>
-        <a className="nav-link" href="#services">Services</a>
+        {/* Updated link to point to the Gallery section */}
+        <a className="nav-link" href="#gallery">Services</a>
         <a className="nav-link" href="#who-we-are">Who We Are</a>
       </nav>
 
