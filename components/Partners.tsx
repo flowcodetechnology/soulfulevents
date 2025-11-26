@@ -1,18 +1,17 @@
 import React from 'react';
 
 const Partners: React.FC = () => {
-  // Using Clearbit Logo API to fetch logos dynamically based on domain names.
-  // Replaced text-based fallback with local asset path for uniformity.
+  // Mixed source: Local assets for specific partners, Clearbit URLs for global brands
   const partners = [
     { name: "Zoho", logo: "https://logo.clearbit.com/zoho.com" },
-    { name: "Grundfos", logo: "https://logo.clearbit.com/grundfos.com" },
+    { name: "Grundfos", logo: "/assets/grundfos.png" },
     { name: "Sybyl", logo: "https://logo.clearbit.com/sybyl.com" },
-    { name: "BBC", logo: "https://logo.clearbit.com/bbc.com" },
+    { name: "BBC Africa", logo: "https://logo.clearbit.com/bbc.com" },
     { name: "Saint Gobain", logo: "https://logo.clearbit.com/saint-gobain.com" },
-    { name: "Food 4 Education", logo: "https://logo.clearbit.com/food4education.org" },
-    { name: "Hayat", logo: "https://logo.clearbit.com/hayat.com" },
-    { name: "Nairobi Chapel", logo: "https://logo.clearbit.com/nairobichapel.org" },
-    { name: "Simplify IT", logo: "https://logo.clearbit.com/simplifyit.com" },
+    { name: "Food 4 Education", logo: "/assets/food-4-education.png" },
+    { name: "Hayat", logo: "/assets/hayat.png" },
+    { name: "Nairobi Chapel Syokimau", logo: "/assets/nairobi-chapel.png" },
+    { name: "Simplify IT", logo: "/assets/simplify-it.png" },
     { name: "Ilina Program", logo: "/assets/ilina-program.png" }
   ];
 
